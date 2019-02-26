@@ -1,19 +1,23 @@
 ---
+- hosts: local
+  tasks:
+    - include_tasks: pre_flightcheck.yml
+
 - hosts: hosts
   roles:
-    - beats_role
+    - { role: beats_role, when: hostvars.localhost.elasticsearch.status==200 and hostvars.localhost.kibana.status==200 }
 
 - hosts: filebeat
   roles:
-    - filebeat
+    - { role: filebeat, when: hostvars.localhost.elasticsearch.status==200 and hostvars.localhost.kibana.status==200 }
 - hosts: metricbeat
   roles:
-    - metricbeat
+    - { role: metricbeat, when: hostvars.localhost.elasticsearch.status==200 and hostvars.localhost.kibana.status==200 }
 
 - hosts: heartbeat
   roles: 
-    - heartbeat
+    - { role: heartbeat, when: hostvars.localhost.elasticsearch.status==200 and hostvars.localhost.kibana.status==200 }
 
 - hosts: packetbeat
   roles:
-    - packetbeat
+    - { role: packetbeat, when: hostvars.localhost.elasticsearch.status==200 and hostvars.localhost.kibana.status==200 }

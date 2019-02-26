@@ -5,7 +5,7 @@ filebeat.config.modules:
   reload.enabled: true
 #All data indexed to Elasticsearch
 output.elasticsearch:
-  hosts: ["elasticsearch:9200"]
+  hosts: ["{{ elasticsearch_url }}"]
   password: "{{ elasticsearch_password }}"
   username: "{{ elasticsearch_username }}"
 logging.to_files: false

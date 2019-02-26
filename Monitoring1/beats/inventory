@@ -6,12 +6,16 @@
 #Define your Target Server FQDN under hosts block to install beats.
 
 [hosts]
-ec2-50-112-218-49.us-west-2.compute.amazonaws.com ansible_user=ec2-user
-ec2-50-112-xx-xx.us-west-2.compute.amazonaws.com ansible_user=ubuntu
+ec2-52-27-253-125.us-west-2.compute.amazonaws.com ansible_user=ec2-user
+#ec2-50-112-xx-xx.us-west-2.compute.amazonaws.com ansible_user=ubuntu                                     
+
+[local]
+localhost
 
 #Define your Target Server FQDN under filebeat block to enable and configure filebeat. define the related variables under [filebeat:vars] block. 
 
 [filebeat]
+#ec2-52-27-253-125.us-west-2.compute.amazonaws.com
 #ec2-50-112-xx-xx.us-west-2.compute.amazonaws.com
 
 #Define your Target Server FQDN under Metricbeat block to enable and configure Metricbeat. define the related variables under [metricbeat:vars] block.  
@@ -42,7 +46,7 @@ filebeat_mysql_slowlog_logpath=/var/log/mysql/mysql-slow.log*
 filebeat_nginx_enable=true
 filebeat_nginx_access_logpath=/var/log/nginx/access.log*
 filebeat_nginx_error_logpath=/var/log/nginx/error.log*
-filebeat_dashboard_import=false
+filebeat_dashboard_import=true
 
 
 #Update below default values with your metricbeat values.
@@ -79,7 +83,7 @@ ansible_connection=ssh
 ansible_user=ec2-user
 ansible_become=yes
 #update the Elasticsearch URL to store the data.
-elasticsearch_url=http://elasticsearch:9200
+elasticsearch_url=http://172.31.16.98:9200
 elasticsearch_username=elastic 
 elasticsearch_password=changeme
 
@@ -87,3 +91,13 @@ elasticsearch_password=changeme
 kibana_url=http://172.31.16.98:5601
 kibana_username=elastic 
 kibana_password=changeme
+
+[local:vars]
+ansible_connection=local
+ansible_user=ec2-user
+ansible_become=yes
+#update the Elasticsearch URL to store the data.
+elasticsearch_url=http://172.31.16.98:9200
+#update the Kibana URL to visualize the data.
+kibana_url=http://172.31.16.98:5601
+

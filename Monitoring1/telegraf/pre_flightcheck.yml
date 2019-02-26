@@ -12,9 +12,9 @@
   ignore_errors: yes
 - name: echo error message for influxdb
   debug:
-    msg: "{{ influxdb_url }} not active"
+    msg: "http://{{ influxdb_IP }}:8083 not active"
   when: influx.status != 200
 - name: echo error message for grafana
   debug:
-    msg: http://{{ grafana_ip }}:3000 not active
+    msg: "http://{{ grafana_ip }}:3000 not active"
   when: grafana.status != 200
