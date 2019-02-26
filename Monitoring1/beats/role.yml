@@ -1,0 +1,19 @@
+---
+- hosts: hosts
+  roles:
+    - beats_role
+
+- hosts: filebeat
+  roles:
+    - filebeat
+- hosts: metricbeat
+  roles:
+    - metricbeat
+
+- hosts: heartbeat
+  roles: 
+    - heartbeat
+
+- hosts: packetbeat
+  roles:
+    - packetbeat
