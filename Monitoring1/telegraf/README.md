@@ -4,8 +4,8 @@ This Directory contains files to install ansible and trigger the ansible playboo
 
 ## How to use 
 # Prerequisites
-  Linux VMs (Currently supported Redhat,Debian) which needs to be monitored.
-  InfluxDB 
+  Linux VMs (Currently supported Redhat,Debian) which needs to be monitored.                                                           
+  InfluxDB                                                                         
   Grafana
 
 # Step 1
