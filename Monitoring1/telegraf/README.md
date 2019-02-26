@@ -38,10 +38,18 @@ ansible_password=ec2-user
 # Step 2b
 Update the influxdb URL and username/password.
                                                                                                             
-influxdb_url="http://influxdb:8086"                                                                                                     
+influxdb_IP=influxdb
+influxdb_Port=8086
 influxdb_DBName="javastack"                                                                                                             
 influxdb_username="root"                                                                                                         
-influxdb_password="root"
+influxdb_password="root"                                                                            
+
+Update The Grafana Details to import grafana dashbaords.
+
+grafana_IP=grafana
+grafana_Port=3000
+grafana_username=testuser
+grafana_password=changeme
 
 # Step 2c
 Asume VM1 has tomcat and you want to monitor tomcat with telegraf.To Configure tomcat plugin update the host entriess under tomcat block as shown below. 
@@ -77,6 +85,8 @@ Open the influxDB UI (http://influxdb:8083) and validate the data with below que
 SHOW DATABASES                                                                                                                           
 SHOW MEASUREMENTS                                                                                                                       
 SHOW TAG KEYS FROM "measurement_name"                                                                                                   
-SHOW TAG VALUES FROM "measurement_name" WITH KEY = "tag_key"                                                                            
+SHOW TAG VALUES FROM "measurement_name" WITH KEY = "tag_key"                                        
+
+Access Grafana UI (http://grafana:3000) and validate the datasourece and dashboards are imported.
 
 
